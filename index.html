@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skycast — Weather Now</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="weather-default">
+
+  <div class="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">◐</span>
+        <span class="brand-name">Skycast</span>
+      </div>
+      <form id="search-form" class="search-form">
+        <input
+          type="text"
+          id="city-input"
+          placeholder="Search a city…"
+          autocomplete="off"
+          required
+        >
+        <button type="submit" aria-label="Search">→</button>
+      </form>
+    </header>
+
+    <main id="app-main">
+
+      <!-- Empty / loading / error state all show up here -->
+      <div id="status-message" class="status-message">
+        <p>Search your city to check the current weather</p>
+      </div>
+
+      <!-- Current weather card - hidden until we have data -->
+      <section id="current-weather" class="current-weather hidden">
+        <div class="condition-icon" id="condition-icon">☀️</div>
+        <div class="temp" id="temp">--°</div>
+        <div class="location" id="location">—</div>
+        <div class="condition-text" id="condition-text">—</div>
+        <div class="date-text" id="date-text">—</div>
+
+        <div class="details-grid">
+          <div class="detail">
+            <span class="detail-label">Feels like</span>
+            <span class="detail-value" id="feels-like">--°</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Humidity</span>
+            <span class="detail-value" id="humidity">--%</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Wind</span>
+            <span class="detail-value" id="wind">-- km/h</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Pressure</span>
+            <span class="detail-value" id="pressure">-- hPa</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5-day forecast strip - hidden until we have data -->
+      <section id="forecast" class="forecast hidden">
+        <h2 class="forecast-title">Forecast for next 5 days</h2>
+        <div class="forecast-strip" id="forecast-strip"></div>
+      </section>
+
+      <!-- Analytics & Stats Section -->
+      <section id="analytics-section" class="analytics-container">
+        <div class="analytics-card">
+          <h3>Top Searched</h3>
+          <ul id="top-cities-list"><li>Loading...</li></ul>
+        </div>
+
+        <div class="analytics-card">
+          <h3>Recent Searches</h3>
+          <ul id="user-history-list"><li>Loading...</li></ul>
+        </div>
+
+        <div class="analytics-card">
+          <h3>National Highlights</h3>
+          <p>Best Temp: <strong id="best-temp-city">Loading...</strong></p>
+          <p>Cleanest Air: <strong id="best-aqi-city">Loading...</strong></p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>Weather data from Open-Meteo</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
