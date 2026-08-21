@@ -1,19 +1,3 @@
-/* =========================================================
-   What this file does, in order:
-   1. Grabs references to the HTML elements we'll update.
-   2. Listens for the search form being submitted.
-   3. Calls the Open-Meteo GEOCODING API to turn a city
-      name (text) into latitude/longitude (numbers).
-   4. Calls the Open-Meteo FORECAST API using those
-      coordinates to get the actual weather data.
-   5. Updates the page with that data.
-
-   No API key is needed for Open-Meteo
-   ========================================================= */
-
-// ---- 1. Element references --------------------------------
-// grab every element we'll need to change just once,
-// instead of searching the DOM again every time.
 const searchForm   = document.getElementById('search-form');
 const cityInput    = document.getElementById('city-input');
 
@@ -33,11 +17,7 @@ const pressureEl      = document.getElementById('pressure');
 const forecastStripEl = document.getElementById('forecast-strip');
 
 
-// ---- 2. Listen for the search ------------------------------
-// 'submit' fires when the user presses Enter or clicks the
-// button. preventDefault() stops the browser's default
-// behaviour of reloading the page (forms reload pages unless
-// you stop them — this trips up almost every beginner once).
+
 searchForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -48,7 +28,7 @@ searchForm.addEventListener('submit', async (event) => {
 });
 
 
-// INSERT THIS REPLACEMENT BLOCK AT LINE 54:
+
 document.addEventListener('DOMContentLoaded', loadAnalytics);
 
 async function loadWeatherForCity(cityName) {
@@ -108,7 +88,7 @@ async function loadAnalytics() {
     console.error('Failed loading analytics:', err);
   }
 }
-// Turns a city name like "Chennai" into { latitude, longitude, name, country }
+// Turns a city name into { latitude, longitude, name, country }
 async function geocodeCity(cityName) {
   const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=en&format=json`;
 
@@ -163,10 +143,7 @@ function renderWeather(place, weather) {
   const current = weather.current;
   const info = getWeatherInfo(current.weather_code, current.is_day);
 
-  // Swap the whole page's color mood to match the weather.
-  // This is done by changing the <body> class — every color
-  // in style.css is defined per weather-* class, so one line
-  // here updates the entire page.
+  
   document.body.className = current.is_day ? info.bodyClass : 'weather-night';
 
   conditionIconEl.textContent = info.icon;

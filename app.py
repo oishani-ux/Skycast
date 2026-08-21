@@ -9,9 +9,19 @@ from sqlalchemy import func
 app = Flask(__name__)
 CORS(app)
 
-# --- Database Setup (SQLite) ---
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///weather.db'
+# --- Database Setup (Supabase) ---
+from sqlalchemy.pool import NullPool
+import os
+
+db_url = os.environ.get('DATABASE_URL', 'sqlite:///weather.db')
+if db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql://", 1)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+if 'sqlite' not in db_url:
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {"poolclass": NullPool}
 db = SQLAlchemy(app)
 
 # Database Table 1: Log every search

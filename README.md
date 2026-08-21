@@ -27,12 +27,12 @@ To run this project locally, follow these steps:
 
 1.Install dependencies:
 Ensure you have Python installed on your system, then run:
-
-  pip install Flask requests flask-cors Flask-SQLAlchemy
+  
+pip install Flask requests flask-cors Flask-SQLAlchemy
 
 
 2.Initialize the application:
-
+  
   python app.py
 
 3.Access the web interface:
