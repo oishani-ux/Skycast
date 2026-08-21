@@ -1,6 +1,16 @@
-# Skycast — Full-Stack Weather & Analytics Dashboard
+# Skycast — A Smart Weather App
+
+**🚀 Live Demo:** https://skycast-olive.vercel.app
 
 Skycast is a responsive, full-stack weather application that delivers real-time weather forecasts, air quality metrics, and search analytics. Designed with a dynamic user interface, the application automatically adapts its visual theme based on current meteorological conditions.
+
+## Technical Architecture
+* **Frontend:** HTML5, CSS3, Vanilla JavaScript
+* **Backend:** Python, Flask, Flask-SQLAlchemy, Flask-CORS
+* **Database:** PostgreSQL (Hosted on Supabase)
+* **Hosting:** Vercel
+* **External APIs:** Open-Meteo
+
 
 ## Key Features
 * **Real-Time Data Integration:** Retrieves live temperature, humidity, wind speed, and Air Quality Index (AQI) via the Open-Meteo API.
@@ -8,11 +18,6 @@ Skycast is a responsive, full-stack weather application that delivers real-time 
 * **Analytics & Tracking:** Features a built-in analytics engine powered by SQLite that tracks trending searches, logs user search history, and calculates optimal national weather conditions (e.g., "Best Temp," "Cleanest Air").
 * **Responsive Layout:** Engineered with a mobile-first approach, utilizing modern CSS Grid and Flexbox for seamless scaling across desktop and mobile devices.
 
-## Technical Architecture
-* **Frontend:** HTML5, CSS3, Vanilla JavaScript
-* **Backend:** Python, Flask, Flask-SQLAlchemy, Flask-CORS
-* **Database:** SQLite
-* **External APIs:** Open-Meteo (Geocoding, Weather Forecast, and Air Quality)
 
 ##  Installation & Setup
 
